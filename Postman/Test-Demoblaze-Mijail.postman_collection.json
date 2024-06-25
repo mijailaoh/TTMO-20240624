@@ -1,0 +1,649 @@
+{
+	"info": {
+		"_postman_id": "0a7ea922-74a6-432f-948f-71d951c1a39d",
+		"name": "Test-Demoblaze-Mijail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35066665"
+	},
+	"item": [
+		{
+			"name": "Add_New_Pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//// Get variables from the payload (section)",
+							"const body = JSON.parse(pm.request.body.raw);",
+							"const petIdBody = body.id;",
+							"const petNameBody = body.name;",
+							"const petCategoryBody = body.category;",
+							"const petPhotoUrlsBody = body.photoUrls;",
+							"const petTagsBody = body.tags;",
+							"const petStatusBody = body.status;",
+							"",
+							"//// Get variables from the response (section) ",
+							"const response = pm.response.json();",
+							"const petIdResponse = response.id;",
+							"const petNameResponse = response.name;",
+							"const petCategoryResponse = response.category;",
+							"const petPhotoUrlsResponse = response.photoUrls;",
+							"const petTagsResponse = response.tags;",
+							"const petStatusResponse = response.status;",
+							"",
+							"//// Set collection variables (petId)",
+							"pm.collectionVariables.set(\"petId\", petIdBody );",
+							"",
+							"",
+							"//// TEST",
+							"var i = 2;",
+							"",
+							"// Test case Method",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [id: ${petIdResponse}] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('id');",
+							"    pm.expect(petIdResponse).to.not.be.null;",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [category] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('category');",
+							"    pm.expect(petCategoryResponse).to.have.property('id');",
+							"    pm.expect(petCategoryResponse).to.have.property('name');",
+							"    pm.expect(petCategoryResponse).to.not.be.null;",
+							"    pm.expect(petCategoryResponse.id).to.be.eql(petCategoryBody.id);",
+							"    pm.expect(petCategoryResponse.name).to.be.eql(petCategoryBody.name);",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [name: ${petNameBody}] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('name');",
+							"    pm.expect(petNameResponse).to.not.be.null;",
+							"    pm.expect(petNameResponse).to.be.eql(petNameBody);",
+							"});",
+							"",
+							"petPhotoUrlsResponse.forEach((PhotoUrl, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} - Verificar el parámetro [PhotoUrl: ${PhotoUrl}]`, function () {",
+							"        pm.expect(PhotoUrl).to.be.eql(petPhotoUrlsBody[index]);",
+							"    });",
+							"});",
+							"",
+							"petTagsResponse.forEach((tag, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} --> Verificar el parámetro [Tag-${index+1}: ${tag.name}]`, function () {",
+							"        pm.expect(tag).to.have.property('id');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag).to.have.property('name');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag.id).to.be.eql(petTagsBody[index].id);",
+							"        pm.expect(tag.name).to.be.eql(petTagsBody[index].name);",
+							"    });",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [status: ${petStatusBody}] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('status');",
+							"    pm.expect(petStatusResponse).to.not.be.null;",
+							"    pm.expect(petStatusResponse).to.be.eql(petStatusBody);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const petId = 922337203685466",
+							"const names = ['Buddy', 'Whiskers', 'Tweety', 'Goldie', 'Rex'];",
+							"const categories = [",
+							"    {",
+							"        \"id\": 1,",
+							"        \"name\": \"Dogs\"",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"name\": \"Cats\"",
+							"    },",
+							"    {",
+							"        \"id\": 3,",
+							"        \"name\": \"Birds\"",
+							"    }",
+							"];",
+							"const tags = [",
+							"    {",
+							"        \"id\": 1,",
+							"        \"name\": \"friendly\"",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"name\": \"playful\"",
+							"    },",
+							"    {",
+							"        \"id\": 3,",
+							"        \"name\": \"guard\"",
+							"    },",
+							"    {",
+							"        \"id\": 4,",
+							"        \"name\": \"small\"",
+							"    },",
+							"    {",
+							"        \"id\": 5,",
+							"        \"name\": \"goldfish\"",
+							"    }",
+							"];",
+							"const statuss = ['available', 'pending'];",
+							"",
+							"const imageUrls = [",
+							"    \"https://randompet.me/api/portraits/pet/1.jpg\",",
+							"    \"https://randompet.me/api/portraits/pet/2.jpg\",",
+							"    \"https://randompet.me/api/portraits/pet/3.jpg\",",
+							"    \"https://randompet.me/api/portraits/pet/4.jpg\",",
+							"    \"https://randompet.me/api/portraits/pet/5.jpg\",",
+							"    \"https://randompet.me/api/portraits/pet/6.jpg\"",
+							"];",
+							"",
+							"function getRandomElement(array) {",
+							"    return array[Math.floor(Math.random() * array.length)];",
+							"}",
+							"",
+							"function getRandomNumber(min, max) {",
+							"    return Math.floor(Math.random() * (max - min + 1)) + min;",
+							"}",
+							"",
+							"const selectRandomTags = async (tags) => {",
+							"    const numberOfTags = getRandomNumber(1, 3); // Selecciona un número aleatorio entre 1 y 3",
+							"    const selectedTags = [];",
+							"",
+							"    while (selectedTags.length < numberOfTags) {",
+							"        const tag = getRandomElement(tags);",
+							"",
+							"        // Verificar si el tag ya ha sido seleccionado por su id",
+							"        if (!selectedTags.some(t => t && t.id === tag.id)) {",
+							"            selectedTags.push(tag);",
+							"        }",
+							"    }",
+							"",
+							"    return selectedTags;",
+							"};",
+							"",
+							"// Función para establecer las variables de colección en Postman",
+							"const setCollectionVariables = async () => {",
+							"    // Obtener tags seleccionados",
+							"    const selectedTags = await selectRandomTags(tags);",
+							"",
+							"    // Convertir los tags seleccionados a objetos con propiedades id y name",
+							"    const formattedTags = selectedTags.map(tag => {",
+							"        return {",
+							"            id: tag.id,",
+							"            name: tag.name",
+							"        };",
+							"    });",
+							"",
+							"    // Setear variables de colección en Postman",
+							"    pm.collectionVariables.set(\"name\", getRandomElement(names));",
+							"    pm.collectionVariables.set(\"category\", JSON.stringify(getRandomElement(categories)));",
+							"    pm.collectionVariables.set(\"photoUrls\", JSON.stringify([getRandomElement(imageUrls), getRandomElement(imageUrls)]));",
+							"    pm.collectionVariables.set(\"tag\", JSON.stringify(formattedTags));",
+							"    pm.collectionVariables.set(\"status\", getRandomElement(statuss));",
+							"    pm.collectionVariables.set(\"petId\", petId); ",
+							"};",
+							"",
+							"// Llamar a la función para establecer variables de colección",
+							"setCollectionVariables();",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 922337203685466,\n    \"name\": \"{{name}}\",\n    \"category\": {{category}},\n    \"photoUrls\": {{photoUrls}},\n    \"tags\": {{tag}},\n    \"status\": \"{{status}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\n  'https://petstore.swagger.io/v2/pet' \\\n  -H 'accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n  \"id\": 0,\n  \"category\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  \"status\": \"available\"\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Pet_By_Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//// Get variables from the collection (section)",
+							"const petId = pm.collectionVariables.get(\"petId\");",
+							"const petName = pm.collectionVariables.get(\"name\");",
+							"const petCategory = JSON.parse(pm.collectionVariables.get(\"category\"));",
+							"const petPhotoUrls = JSON.parse(pm.collectionVariables.get(\"photoUrls\"));",
+							"const petTags = JSON.parse(pm.collectionVariables.get(\"tag\"));",
+							"const petStatus = pm.collectionVariables.get(\"status\");",
+							"",
+							"//// Get variables from the response (section) ",
+							"const response = pm.response.json();",
+							"const petIdResponse = response.id;",
+							"const petNameResponse = response.name;",
+							"const petCategoryResponse = response.category;",
+							"const petPhotoUrlsResponse = response.photoUrls;",
+							"const petTagsResponse = response.tags;",
+							"const petStatusResponse = response.status;",
+							"",
+							"//// TEST",
+							"var i = 2;",
+							"",
+							"// Test case Method",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [id: ${petIdResponse}] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('id');",
+							"    pm.expect(petIdResponse).to.not.be.null;",
+							"    pm.expect(petIdResponse).to.be.eql(petId);",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [category] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('category');",
+							"    pm.expect(petCategoryResponse).to.have.property('id');",
+							"    pm.expect(petCategoryResponse).to.have.property('name');",
+							"    pm.expect(petCategoryResponse).to.not.be.null;",
+							"    pm.expect(petCategoryResponse.id).to.be.eql(petCategory.id);",
+							"    pm.expect(petCategoryResponse.name).to.be.eql(petCategory.name);",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [name: ${petName}] parameter`, function () {",
+							"    pm.expect(pm.response.json()).to.have.property('name');",
+							"    pm.expect(petNameResponse).to.not.be.null;",
+							"    pm.expect(petNameResponse).to.be.eql(petName);",
+							"});",
+							"",
+							"petPhotoUrlsResponse.forEach((PhotoUrl, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} - Verificar el parámetro [PhotoUrl: ${PhotoUrl}]`, function () {",
+							"        pm.expect(PhotoUrl).to.be.eql(petPhotoUrls[index]);",
+							"    });",
+							"});",
+							"",
+							"petTagsResponse.forEach((tag, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} --> Verificar el parámetro [Tag-${index+1}: ${tag.name}]`, function () {",
+							"        pm.expect(tag).to.have.property('id');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag).to.have.property('name');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag.id).to.be.eql(petTags[index].id);",
+							"        pm.expect(tag.name).to.be.eql(petTags[index].name);",
+							"    });",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [status: ${petStatus}] parameter`, function () {",
+							"",
+							"    pm.expect(pm.response.json()).to.have.property('status');",
+							"    pm.expect(petStatusResponse).to.not.be.null;",
+							"    pm.expect(petStatusResponse).to.be.eql(petStatus);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/922337203685466",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"922337203685466"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\n  'https://petstore.swagger.io/v2/pet/9223372036854658425' \\\n  -H 'accept: application/json'"
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"",
+							"//// Get variables from the payload (section)",
+							"const body = JSON.parse(pm.request.body.raw);",
+							"const petIdBody = body.id;",
+							"const petNameBody = body.name;",
+							"const petCategoryBody = body.category;",
+							"const petPhotoUrlsBody = body.photoUrls;",
+							"const petTagsBody = body.tags;",
+							"const petStatusBody = body.status;",
+							"",
+							"//// Get variables from the response (section) ",
+							"const response = pm.response.json();",
+							"const petIdResponse = response.id;",
+							"const petNameResponse = response.name;",
+							"const petCategoryResponse = response.category;",
+							"const petPhotoUrlsResponse = response.photoUrls;",
+							"const petTagsResponse = response.tags;",
+							"const petStatusResponse = response.status;",
+							"",
+							"//// Set collection variables (petId)",
+							"pm.collectionVariables.set(\"petId\", petIdBody );",
+							"",
+							"",
+							"//// TEST",
+							"var i = 2;",
+							"",
+							"// Test case Method",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [id: ${petIdResponse}] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(pm.response.json()).to.have.property('id');",
+							"    pm.expect(petIdResponse).to.not.be.null;",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [category] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(pm.response.json()).to.have.property('category');",
+							"    pm.expect(petCategoryResponse).to.have.property('id');",
+							"    pm.expect(petCategoryResponse).to.have.property('name');",
+							"    pm.expect(petCategoryResponse).to.not.be.null;",
+							"    pm.expect(petCategoryResponse.id).to.be.eql(petCategoryBody.id);",
+							"    pm.expect(petCategoryResponse.name).to.be.eql(petCategoryBody.name);",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [name: ${petNameBody}] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(pm.response.json()).to.have.property('name');",
+							"    pm.expect(petNameResponse).to.not.be.null;",
+							"    pm.expect(petNameResponse).to.be.eql(petNameBody);",
+							"});",
+							"",
+							"petPhotoUrlsResponse.forEach((PhotoUrl, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} - Verificar el parámetro [PhotoUrl: ${PhotoUrl}]`, function () {",
+							"        pm.expect(PhotoUrl).to.be.eql(petPhotoUrlsBody[index]);",
+							"    });",
+							"});",
+							"",
+							"petTagsResponse.forEach((tag, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} --> Verificar el parámetro [Tag-${index+1}: ${tag.name}]`, function () {",
+							"        pm.expect(tag).to.have.property('id');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag).to.have.property('name');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag.id).to.be.eql(petTagsBody[index].id);",
+							"        pm.expect(tag.name).to.be.eql(petTagsBody[index].name);",
+							"    });",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [status: ${petStatusBody}] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(pm.response.json()).to.have.property('status');",
+							"    pm.expect(petStatusResponse).to.not.be.null;",
+							"    pm.expect(petStatusResponse).to.be.eql(petStatusBody);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 922337203685466,\n    \"name\": \"Nacho\",\n    \"category\": {{category}},\n    \"photoUrls\": {{photoUrls}},\n    \"tags\": {{tag}},\n    \"status\": \"sold\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'PUT' \\\n  'https://petstore.swagger.io/v2/pet' \\\n  -H 'accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n  \"id\": 9223372036854658425,\n  \"category\": {\n    \"id\": 0,\n    \"name\": \"string\"\n  },\n  \"name\": \"doggie-22\",\n  \"photoUrls\": [\n    \"string\"\n  ],\n  \"tags\": [\n    {\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ],\n  \"status\": \"sold\"\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Pet_By_Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//// Get variables from the collection (section)",
+							"const petId = pm.collectionVariables.get(\"petId\");",
+							"const petName = 'Nacho';",
+							"const petCategory = JSON.parse(pm.collectionVariables.get(\"category\"));",
+							"const petPhotoUrls = JSON.parse(pm.collectionVariables.get(\"photoUrls\"));",
+							"const petTags = JSON.parse(pm.collectionVariables.get(\"tag\"));",
+							"const petStatus = \"sold\";",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// Filtrar por id y status",
+							"const filteredPets = response.find(pet => {",
+							"    return pet.id === petId && pet.status === petStatus;",
+							"});",
+							"",
+							"//// TEST",
+							"var i = 2;",
+							"",
+							"// Test case Method",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [id: ${filteredPets.id}] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(filteredPets).to.have.property('id');",
+							"    pm.expect(filteredPets.id).to.not.be.null;",
+							"    pm.expect(filteredPets.id).to.be.eql(petId);",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [category] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(filteredPets).to.have.property('category');",
+							"    pm.expect(filteredPets.category).to.have.property('id');",
+							"    pm.expect(filteredPets.category).to.have.property('name');",
+							"    pm.expect(filteredPets.category).to.not.be.null;",
+							"    pm.expect(filteredPets.category.id).to.be.eql(petCategory.id);",
+							"     pm.expect(filteredPets.category.name).to.be.eql(petCategory.name);",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [name: ${petName}] parameter`, function () {",
+							"    // exists and is not null",
+							"    pm.expect(filteredPets).to.have.property('name');",
+							"    pm.expect(filteredPets.name).to.not.be.null;",
+							"    pm.expect(filteredPets.name).to.be.eql(petName);",
+							"});",
+							"",
+							"filteredPets.photoUrls.forEach((PhotoUrl, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} - Verificar el parámetro [PhotoUrl: ${PhotoUrl}]`, function () {",
+							"        pm.expect(PhotoUrl).to.be.eql(petPhotoUrls[index]);",
+							"    });",
+							"});",
+							"",
+							"filteredPets.tags.forEach((tag, index) => {",
+							"    i++;",
+							"    pm.test(`TEST: ${i} --> Verificar el parámetro [Tag-${index+1}: ${tag.name}]`, function () {",
+							"        pm.expect(tag).to.have.property('id');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag).to.have.property('name');",
+							"        pm.expect(tag).to.not.be.null;",
+							"        pm.expect(tag.id).to.be.eql(petTags[index].id);",
+							"        pm.expect(tag.name).to.be.eql(petTags[index].name);",
+							"    });",
+							"});",
+							"",
+							"i++; pm.test(`\"TEST: ${i} --> Verify that the [status: ${petStatus}] parameter`, function () {",
+							"    pm.expect(filteredPets).to.have.property('status');",
+							"    pm.expect(filteredPets.status).to.not.be.null;",
+							"    pm.expect(filteredPets.status).to.be.eql(petStatus);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=sold",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "sold"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\n  'https://petstore.swagger.io/v2/pet/findByStatus?status=sold' \\\n  -H 'accept: application/json'"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"TEST: 1 --> Response time is less than 3000ms (\" + pm.response.responseTime + \"ms)\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+					"});",
+					"",
+					"pm.test(\"TEST: 2 --> Response Status = 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "name",
+			"value": ""
+		},
+		{
+			"key": "category",
+			"value": ""
+		},
+		{
+			"key": "photoUrls",
+			"value": ""
+		},
+		{
+			"key": "tag",
+			"value": ""
+		},
+		{
+			"key": "status",
+			"value": ""
+		},
+		{
+			"key": "petId",
+			"value": ""
+		}
+	]
+}
