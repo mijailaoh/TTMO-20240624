@@ -22,7 +22,7 @@ pipeline {
                 script {
                     // Ejecutar pruebas de Cypress
                     echo 'Running Cypress tests...'
-                    sh 'npx cypress run'
+                    sh 'npx cypress run --quiet'
                 }
             }
         }
