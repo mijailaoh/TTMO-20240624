@@ -24,7 +24,8 @@ pipeline {
                 script {
                     // Run Postman tests using Newman
                     echo 'Running Postman tests with Newman...'
-                    sh "newman run https://api.getpostman.com/collections/${POSTMAN_COLLECTION_ID}?apikey=${POSTMAN_API_KEY} --reporters cli,junit --reporter-junit-export results.xml"
+                    def junitOutput = 'Postman/results.xml'
+                    sh "newman run https://api.getpostman.com/collections/${POSTMAN_COLLECTION_ID}?apikey=${POSTMAN_API_KEY} --reporters cli,junit --reporter-junit-export ${junitOutput}"
                 }
             }
         }
