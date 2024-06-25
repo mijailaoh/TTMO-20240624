@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        CYPRESS_BASE_URL = 'http://localhost:3000'
         SLACK_CHANNEL = 'mijail-deploy' // Cambia esto al canal donde quieres enviar la notificación
         SLACK_CREDENTIAL_ID = 'Mijail-Slack' // Cambia esto al ID de las credenciales de Slack configuradas en Jenkins
     }
