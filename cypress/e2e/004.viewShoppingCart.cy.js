@@ -61,7 +61,7 @@ describe('Ver carrito', () => {
         });
     });
 
-    it.only('Verificar Total Price después de eliminar un producto', () => {
+    it('Verificar Total Price después de eliminar un producto', () => {
         let totalPrice = 0;
         let deletedProductPrice = 0; // Variable para almacenar el precio del producto eliminado
     
