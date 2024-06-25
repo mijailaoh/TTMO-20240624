@@ -1,0 +1,14 @@
+{
+  "name": "ttmo-20240624",
+  "version": "1.0.0",
+  "description": "Prueba tecnica Mijail",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mijail Osorio",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.12.0"
+  }
+}
