@@ -1,4 +1,4 @@
-describe('Prueba Tecnica', () => {
+describe('Home Page', () => {
 
   beforeEach(() => {
     cy.visit('/');
@@ -32,7 +32,7 @@ describe('Prueba Tecnica', () => {
     });
   })
 
-  it('Checks product list', () => {
+  it('Checks Product List', () => {
     cy.get('#tbodyid').should('exist').each(($row) => {
       cy.wrap($row).find('.card.h-100').should('exist');
       cy.wrap($row).find('.card-block').should('exist');
