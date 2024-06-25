@@ -26,6 +26,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    // Deploy a cualquier Instancia
+                    echo 'Running deploy...'
+                }
+            }
+        }
     }
 
     post {
