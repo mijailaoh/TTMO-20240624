@@ -7,7 +7,13 @@ describe('Register and Login', () => {
         const id = idRandom();
         const newUser = {
             username: `mijail.${id}@gmail.com`,
-            password: 'a123456B'
+            password: 'a123456B',
+            name: 'Mijail Osorio',
+            country: 'Ecuador',
+            city: 'Quito',
+            card: '1025-4785-9636-3570',
+            month: 11,
+            year: 2025
         };
 
         // Write newUser object to user.json file
