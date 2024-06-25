@@ -8,11 +8,22 @@ pipeline {
     }
 
     stages {
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Instalar dependencias
+                    echo 'Installing dependencies...'
+                    sh 'npm install'
+                }
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 script {
-                    echo 'Test'
-                    // Aquí puedes agregar tus comandos para ejecutar las pruebas
+                    // Ejecutar pruebas de Cypress
+                    echo 'Running Cypress tests...'
+                    sh 'npx cypress run'
                 }
             }
         }
