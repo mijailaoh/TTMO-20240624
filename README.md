@@ -2,11 +2,21 @@
 
 Prueba técnica desarrollada por Mijail Osorio utilizando Node.js.
 
-## Prueba Técnica
+## Instrucciones
+
+1. Clone el repositorio o descomprima el archivo llamado `Mijail-Test.zip`.
+2. Navegue hasta la carpeta raíz del proyecto o folder y ejecute el comando `npm install`.
+3. Verifique que tenga instalado Newman; si no lo tiene instalado, puede hacerlo ejecutando el comando `npm install -g newman`.
+
+## Run Test
+1. Para Pruebas E2E ejecute el comando `npm start`
+2. Para Pruebas API ejecute el comando `npm test`
+
+# Detalle Prueba Técnica
 
 Esta prueba técnica está dividida en dos partes:
 
-### Test E2E (End-to-End) con Cypress
+### [01] Test E2E (End-to-End) con Cypress
 
 Se utilizó Cypress para realizar pruebas E2E en el sitio [https://www.demoblaze.com/](https://www.demoblaze.com/).
 
@@ -30,7 +40,7 @@ Se utilizó Cypress para realizar pruebas E2E en el sitio [https://www.demoblaze
 5. **005.Complete-Order.cy.js**
    - blabla
 
-### Test API con Postman
+### [02] Test API con Postman
 
 Se utilizó Postman y Newman para desarrollar y ejecutar pruebas API.
 
@@ -50,8 +60,4 @@ La colección de Postman contiene cuatro requests a [https://petstore.swagger.io
 4. **Get_Pet_By_Status**
    - blabla
 
-## Instrucciones
 
-1. Clone el repositorio o descomprima el archivo llamado `Mijail-Test.zip`.
-2. Navegue hasta la carpeta raíz del proyecto y ejecute el comando `npm install`.
-3. Verifique que tenga instalado Newman; si no lo tiene instalado, puede hacerlo ejecutando el comando `npm install -g newman`.

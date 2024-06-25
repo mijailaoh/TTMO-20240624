@@ -1,10 +1,11 @@
 {
   "name": "ttmo-20240624",
   "version": "1.0.0",
-  "description": "Prueba tecnica Mijail",
+  "description": "Prueba técnica Mijail",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cypress run",
+    "test": "newman run Postman/Test-Demoblaze-Mijail.postman_collection.json --reporters cli,junit --reporter-junit-export Postman/results.xml"  
   },
   "author": "Mijail Osorio",
   "license": "ISC",
