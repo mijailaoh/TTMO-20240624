@@ -1,1 +1,15 @@
-1. 
+1. Introducción
+    Objetivo:   Explica brevemente el propósito de las pruebas realizadas.
+                Alcance: Describe qué aspectos o funcionalidades del sistema fueron cubiertos por las pruebas.
+                
+2. Detalle de Pruebas
+    Pruebas E2E (End-to-End) con Cypress:
+    Resume los resultados de cada archivo de prueba (001.home.cy.js, 002.login.cy.js, etc.):
+
+3. Conclusiones
+    Resumen General:
+
+4. Notas Adicionales
+    Limitaciones y Consideraciones:
+    Discute cualquier limitación o restricción que haya afectado las pruebas.
+    Menciona cualquier consideración importante para interpretar los resultados.
