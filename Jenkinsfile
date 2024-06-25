@@ -24,13 +24,7 @@ pipeline {
             cleanWs()
 
             // Enviar notificación a Slack
-            slackSend(
-                channel: "${SLACK_CHANNEL}",
-                color: currentBuild.currentResult == 'SUCCESS' ? 'good' : 'danger',
-                message: "Build ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}",
-                teamDomain: 'your-team-domain', // Cambia esto por el dominio de tu equipo en Slack
-                tokenCredentialId: "${SLACK_CREDENTIAL_ID}"
-            )
+             slackSend "Build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
         }
     }
 }
