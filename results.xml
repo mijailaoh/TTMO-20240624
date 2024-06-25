@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Test-Demoblaze-Mijail" tests="4" time="0.463">
+  <testsuite name="Add_New_Pet" id="ae154a7a-3c2d-429b-b0de-1bf0f93af858" timestamp="2024-06-25T19:09:29.790Z" tests="11" failures="0" errors="0" time="0.372">
+    <testcase name="TEST: 1 --> Response time is less than 3000ms (372ms)" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 2 --> Response Status = 200" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 3 --> Verify that the [id: 922337203685466] parameter" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 4 --> Verify that the [category] parameter" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 5 --> Verify that the [name: Buddy] parameter" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 6 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/4.jpg]" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 7 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/5.jpg]" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 8 --> Verificar el parámetro [Tag-1: small]" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 9 --> Verificar el parámetro [Tag-2: goldfish]" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 10 --> Verificar el parámetro [Tag-3: playful]" time="0.372" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 11 --> Verify that the [status: pending] parameter" time="0.372" classname="TestDemoblazeMijail"/>
+  </testsuite>
+  <testsuite name="Get_Pet_By_Id" id="bb3b9255-9b8a-48e0-a804-f4435ca0171e" timestamp="2024-06-25T19:09:29.790Z" tests="11" failures="0" errors="0" time="0.029">
+    <testcase name="TEST: 1 --> Response time is less than 3000ms (29ms)" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 2 --> Response Status = 200" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 3 --> Verify that the [id: 922337203685466] parameter" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 4 --> Verify that the [category] parameter" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 5 --> Verify that the [name: Buddy] parameter" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 6 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/4.jpg]" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 7 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/5.jpg]" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 8 --> Verificar el parámetro [Tag-1: small]" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 9 --> Verificar el parámetro [Tag-2: goldfish]" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 10 --> Verificar el parámetro [Tag-3: playful]" time="0.029" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 11 --> Verify that the [status: pending] parameter" time="0.029" classname="TestDemoblazeMijail"/>
+  </testsuite>
+  <testsuite name="Update_Pet" id="6b413e60-ea66-4cee-9449-9606e1989810" timestamp="2024-06-25T19:09:29.790Z" tests="11" failures="0" errors="0" time="0.034">
+    <testcase name="TEST: 1 --> Response time is less than 3000ms (34ms)" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 2 --> Response Status = 200" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 3 --> Verify that the [id: 922337203685466] parameter" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 4 --> Verify that the [category] parameter" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 5 --> Verify that the [name: Nacho] parameter" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 6 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/4.jpg]" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 7 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/5.jpg]" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 8 --> Verificar el parámetro [Tag-1: small]" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 9 --> Verificar el parámetro [Tag-2: goldfish]" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 10 --> Verificar el parámetro [Tag-3: playful]" time="0.034" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 11 --> Verify that the [status: sold] parameter" time="0.034" classname="TestDemoblazeMijail"/>
+  </testsuite>
+  <testsuite name="Get_Pet_By_Status" id="568fe3e6-c332-40bc-ba03-f29602d42c68" timestamp="2024-06-25T19:09:29.790Z" tests="11" failures="0" errors="0" time="0.028">
+    <testcase name="TEST: 1 --> Response time is less than 3000ms (28ms)" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 2 --> Response Status = 200" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 3 --> Verify that the [id: 922337203685466] parameter" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 4 --> Verify that the [category] parameter" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 5 --> Verify that the [name: Nacho] parameter" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 6 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/4.jpg]" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 7 - Verificar el parámetro [PhotoUrl: https://randompet.me/api/portraits/pet/5.jpg]" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 8 --> Verificar el parámetro [Tag-1: small]" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 9 --> Verificar el parámetro [Tag-2: goldfish]" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="TEST: 10 --> Verificar el parámetro [Tag-3: playful]" time="0.028" classname="TestDemoblazeMijail"/>
+    <testcase name="&quot;TEST: 11 --> Verify that the [status: sold] parameter" time="0.028" classname="TestDemoblazeMijail"/>
+  </testsuite>
+</testsuites>
