@@ -26,7 +26,7 @@ describe('Register and Login', () => {
                     // Check if the category matches the current product category
                     if (category === product.category) {
                         cy.wrap($item).click().then(() => {
-                            cy.wait(1000);
+                            cy.wait(3000);
                             cy.log(`Clic en el producto: ${product.title}`);
 
                             cy.get('#tbodyid .card-block .card-title').each(($titleElement, index, $titleElements) => {
@@ -38,7 +38,7 @@ describe('Register and Login', () => {
                                     // If the title matches the current product, click on the item
                                     if (trimmedTitle === product.title) {
                                         cy.wrap($titleElement).click().then(() => {
-                                            cy.wait(1000);
+                                            cy.wait(3000);
                                             cy.get('.name').should('be.visible').invoke('text').should('include', product.title);
                                             cy.get('.price-container').should('be.visible').invoke('text').should('include', `${product.price} *includes tax`);
                                             cy.get('#myTabContent').should('be.visible').and('not.be.empty');
