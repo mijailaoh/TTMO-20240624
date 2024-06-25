@@ -19,22 +19,22 @@ pipeline {
             }
         }
 
-        stage('Tests-E2E') {
-            steps {
-                script {
-                    // Run E2E tests with Cypress
-                    echo 'Running Cypress tests...'
-                    sh 'npx cypress run --quiet'
-                }
-            }
-        }
-
         stage('Tests-API') {
             steps {
                 script {
                     // Run Postman tests using Newman
                     echo 'Running Postman tests with Newman...'
                     sh "newman run https://api.getpostman.com/collections/${POSTMAN_COLLECTION_ID}?apikey=${POSTMAN_API_KEY} --reporters cli,junit --reporter-junit-export results.xml"
+                }
+            }
+        }
+
+        stage('Tests-E2E') {
+            steps {
+                script {
+                    // Run E2E tests with Cypress
+                    echo 'Running Cypress tests...'
+                    sh 'npx cypress run --quiet'
                 }
             }
         }
