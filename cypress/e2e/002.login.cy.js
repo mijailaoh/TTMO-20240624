@@ -43,6 +43,7 @@ describe('Register and Login', () => {
         // Verify sign-up button
         cy.get('button.btn.btn-primary').eq(1).should('be.visible').and('have.text', 'Sign up').click().then(() => {
             cy.intercept('POST', 'https://api.demoblaze.com/signup').as('signupRequest');
+            cy.wait(1000);
             cy.wait('@signupRequest').its('response.statusCode').should('eq', 200);
         });
     });
