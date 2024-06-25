@@ -2,27 +2,39 @@ pipeline {
     agent any
 
     environment {
-        SLACK_CHANNEL = 'mijail-deploy' // Cambia esto al canal donde quieres enviar la notificación
-        SLACK_CREDENTIAL_ID = 'Mijail-Slack' // Cambia esto al ID de las credenciales de Slack configuradas en Jenkins
+        SLACK_CHANNEL = 'mijail-deploy' // Change this to the channel where you want to send the notification
+        SLACK_CREDENTIAL_ID = 'Mijail-Slack' // Change this to the ID of the Slack credentials configured in Jenkins
+        POSTMAN_COLLECTION_ID = '35066665-0a7ea922-74a6-432f-948f-71d951c1a39d' // ID of your collection in Postman
+        POSTMAN_API_KEY = credentials('Postman-PMAK') // ID of the Jenkins credentials for the Postman API Key
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Instalar dependencias
+                    // Install dependencies
                     echo 'Installing dependencies...'
                     sh 'npm install'
                 }
             }
         }
 
-        stage('Run Tests') {
+        stage('Tests-E2E') {
             steps {
                 script {
-                    // Ejecutar pruebas de Cypress
+                    // Run E2E tests with Cypress
                     echo 'Running Cypress tests...'
                     sh 'npx cypress run --quiet'
+                }
+            }
+        }
+
+        stage('Tests-API') {
+            steps {
+                script {
+                    // Run Postman tests using Newman
+                    echo 'Running Postman tests with Newman...'
+                    sh "newman run https://api.getpostman.com/collections/${POSTMAN_COLLECTION_ID}?apikey=${POSTMAN_API_KEY} --reporters cli,junit --reporter-junit-export results.xml"
                 }
             }
         }
@@ -30,7 +42,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Deploy a cualquier Instancia
+                    // Deploy to any Instance
                     echo 'Running deploy...'
                 }
             }
@@ -42,12 +54,12 @@ pipeline {
             // Clean up workspace after build
             cleanWs()
 
-            // Enviar notificación a Slack
+            // Send notification to Slack
             slackSend(
                 channel: "${SLACK_CHANNEL}",
                 color: currentBuild.currentResult == 'SUCCESS' ? 'good' : 'danger',
                 message: "Build ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}",
-                teamDomain: 'mijail-deploy', // Cambia esto por el dominio de tu equipo en Slack
+                teamDomain: 'mijail-deploy', // Change this to your team's domain in Slack
                 tokenCredentialId: "${SLACK_CREDENTIAL_ID}"
             )
         }
