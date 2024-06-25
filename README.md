@@ -69,6 +69,12 @@ La colección de Postman contiene cuatro requests a [https://petstore.swagger.io
 4. **Get_Pet_By_Status**
    - Se Verifica que los datos actualizados en el paso 3 fueron correctamede actualizados
 
+## Importar Colleciont Postman
+1. Abra Postman
+2. Haga click en Import collection
+3. Selecione el archivo Test-Demoblaze-Mijail.postman_collection.json que esta dentro de la carpeta Postman.
+4. Run Test Collection.
+
 # CI [Jenkins and Slack]
 Este Projecto tiene un archivo JenkisnFile que permite crear un pipeline de pruebas, con stages simples pero que permiten  monitoriar el estado de la aplicacion.
 Cada PR que se crea dispara automaticamente un Job en Jenkins que inicia las pruebas
