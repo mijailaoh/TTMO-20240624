@@ -27,7 +27,7 @@ pipeline {
             slackSend(
                 channel: "${SLACK_CHANNEL}",
                 color: currentBuild.currentResult == 'SUCCESS' ? 'good' : 'danger',
-                message: "Build ${currentBuild.} finished with status: ${currentBuild.currentResult}",
+                message: "Build ${currentBuild.fullDisplayName} finished with status: ${currentBuild.currentResult}",
                 teamDomain: 'mijail-deploy', // Cambia esto por el dominio de tu equipo en Slack
                 tokenCredentialId: "${SLACK_CREDENTIAL_ID}"
             )
