@@ -35,7 +35,7 @@ pipeline {
                 script {
                     // Run E2E tests with Cypress
                     echo 'Running Cypress tests...'
-                    sh 'npx cypress run --quiet'
+                    sh 'npx cypress run'
                 }
             }
         }

@@ -4,7 +4,7 @@
   "description": "Prueba técnica Mijail",
   "main": "index.js",
   "scripts": {
-    "start": "cypress run",
+    "start": "cypress run --headed",
     "test": "newman run Postman/Test-Demoblaze-Mijail.postman_collection.json --reporters cli,junit --reporter-junit-export Postman/results.xml"  
   },
   "author": "Mijail Osorio",

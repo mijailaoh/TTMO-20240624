@@ -1,1 +1,149 @@
-1. 
+1. Introducción
+    Objetivo: Desarrolo de Pruebas automatizadas para demoblaze.com y petstore.swagger.io
+        Alcance: Se Desarrollaron pruebas E2E usando Cypress al sitio web demoblaze y Para las Pruebas de petstore se uso Postman
+                
+2. Detalle de Pruebas
+    ###### Pruebas E2E (End-to-End) con Cypress:
+        El Objetivo Pricipal es Crear un proceso de pruebas fue el siguiente
+            1. Crear un nuevo usuario.
+            2. Hacer login con el nuevo usuario.
+            3. Agregar productos al carrito de compras 
+                3.1 se agregan tres productos.
+            4. Verificar Productos Agregados al carrito de compras
+                4.1 Se eleimina un prodcuto de la lista.
+            5. Confirmar compra.
+                5.1 Se confirma la compra de 2 productos
+            6. Permitir ejecutar las pruebas multiple veces
+        
+        001.home.cy.js:
+                Este archivo tiene tres (3) test, que validan que el sitio web abre correctamente.
+            Test:
+                1. Home Page Element: 
+                    - Valida Elementos en la pagina como title, carouse y navbar
+                2. Check Left Menu: 
+                    - Valida que el menu por categoria es visible y que se muestran las tres categorias principales
+                3. Checks Product List: 
+                    - Valida que la pagina cargo correctamente y que el usuario puede ver productos
+
+        002.login.cy.js:
+                Este archivo tiene dos (2) test, que validan que un usuario puede registrarse en la plataforma e iniciar session correctamente para luego cerrar.
+            Test:
+                1. before:
+                    - Antes de Inciar la prueba cypress crea un datos de pruebas y los almacena en un archivo llamado "user.json".
+                    - Los datos de pruebas se generan de forma random y se usa en toda las pruebas.
+                    - Una vez creado el "user.json" se realiza assert para validar que el json tiene la data coprrecta.
+                2. beforeEach:
+                    - Antes de cada test se carga los datos de pruebas de "user.json".
+                2. Register New User:
+                    - Se Valida Que el usuario puede registrarse correctamente.
+                    - Tambien se valida que luego que usuario hace click en crear, cypress se intercepta la request a "signup" y devuelva un status Code 200
+                3. Login && Logout:
+                    - Valida Que el usuario puede iniciar session correctamente.
+                    - Tambien se valida que luego que usuario hace click en login, cypress se intercepta la request a "login" y devuelva un status Code 200
+                    - Finalmente valida que el nombre de usuario esta visible
+
+        003.addProducts.cy.js:
+                Este archivo tiene un (1) test, que validan que el usuario Puede agregar pruductos al carrito de compras.
+            Test:
+                1. beforeEach: 
+                    - Antes de Inciar la prueba cypress crea un datos de pruebas y los almacena en un archivo llamado "user.json".
+                    - Tambien cypress usar el commando persoalizado llamado "cy.selectProducts()", 
+                        este comamdo usa un helper "getProducts()" para selecionar tres productos random de una lista de 8 Prodcutos.
+                        getProducts() seleciona un producto de cada categoria
+                    - Los productos selecionas y que sera unsado en las pruebas se almacenan en el archivo llamado "products.json"
+                    - Finalmente antes de cada test se carga los datos de pruebas de "user.json".
+                2. Agregar Productos:
+                    - se utiliza el comando personalizado "cy.loginUser(userData)" para iniciar session con el usuario creado en el Test 002
+                    - se recorren todos los productos dentro de productData y segun su categoria se hace click en el meno izquierdo.
+                    - Se verifica que el prodcuto esta disponible, recorriendo "tbodyid" o la tabla de productos
+                    - una vez identificado el producnto se hace click metiadonte el id en su propiedad href.
+
+        004.addProducts.cy.js:
+                Este archivo tiene dos (2) test, que validan que el usuario Puede ver los pruductos agregados al carrito de compras.
+            Test:
+                1. beforeEach: 
+                    - Antes de Inciar la prueba cypress crea un datos de pruebas y los almacena en un archivo llamado "user.json" y "products.json".
+                2. Verificar Productos:
+                    - se utiliza el comando personalizado "cy.loginUser(userData)" para iniciar session con el usuario creado en el Test 002
+                    - Verifica que el usaurio puede ir al carrito de comprass
+                    - verifica el encabezado de la tabla con los productos
+                    - Verifica que la tabla de productos tenga el total de elementos que fueron selecionados en "products.json". Un total de 3 productos
+                    - Se recorre la lista de productos y verifica que estan disponibles titulo y precio
+                3. Verificar Total Price después de eliminar un producto:
+                    - se utiliza el comando personalizado "cy.loginUser(userData)" para iniciar session con el usuario creado en el Test 002
+                    - Verifica que el usaurio puede ir al carrito de comprass
+                    - Verifica que el usuario puede eliminar un prodcuto de la lista
+                    - Verifica que la tabla de productos tenga el total de elementos que fueron selecionados en "products.json". Un total de 2 productos
+                    - Finalmente se hace dos screenshot para verificar los tres productos agregados inicialmente y los dos prodcutos restantes
+
+        005.Complete-Order.cy.js:
+                Este archivo tiene un (1) test, que validan que el usuario Puede ver confirmar la compra.
+            Test:
+                1. beforeEach: 
+                    - Antes de Inciar la prueba cypress crea un datos de pruebas y los almacena en un archivo llamado "user.json" y "products.json". 
+
+                2. Confirmar Productos
+                    - se utiliza el comando personalizado "cy.loginUser(userData)" para iniciar session con el usuario creado en el Test 002
+                    - Verifica que el usaurio puede ir al carrito de comprass
+                    - verifica la confirmacion de la compra       
+
+    ###### Pruebas E2E (API) con Postman:
+        El Objetivo Pricipal es Crear un proceso de pruebas fue el siguiente
+            1. Crear una nueva mascota.
+            2. Obtener la mascota por ID.
+            3. Actualizar Nombre y status de la mascota 
+            4. Verificar que se actualizaron los datos de la mascora (busqueda por status)
+
+        1.Add_New_Pet:
+            - Pre-request:
+                - Se tiene varios arreglos para crear un body con informacion random
+            - Body:
+                - Name es un valor random asignado a una variable de collecion en el pre-request. 
+                - category es un valor random asignado a una variable de collecion en el pre-request. puede ser Birds, Dogs, etc
+                - photoUrls es un valor random asignado a una variable de collecion en el pre-request. Es un array de dos elementos o url
+                - tags es un valor random asignado a una variable de collecion en el pre-request.  Es un arrar de uno a tres elementos
+                - status es un valor random asignado a una variable de collecion en el pre-request. el estatus solo puede ser available o pending
+            - Post-Request [Test]:
+                - Se capruran los valores enviados en el Body 
+                - Se captura los valores recibidosm en el response
+                - se definie una variable de colecion con el "petId"
+                - Se realizan los test para cada propiedad recibida en el response
+                - para las categorias se realiza un test usando forEach, de esta forma aseguramos que tenemos todas las categorias
+
+        2.Get_Pet_By_Id:
+            - Pre-request:
+                - se utiliza el PetId, definido
+            - Body:
+                - No Usa
+            - Post-Request [Test]:
+                - Se realizan los test para cada propiedad recibida en el response
+
+        3.Update_Pet:
+            - Pre-request:
+                - No usa
+            - Body:
+                - se envia el petid definido
+                - se nevia el nuevo name 'Nacho'
+                - categoria es la misma definida en Add_New_Pet
+                - photoUrls es la misma definida en Add_New_Pet
+                - tags es la misma definida en Add_New_Pet
+                - se envia el nuevo sold 
+            - Post-Request [Test]:
+                - Se realizan los test para cada propiedad recibida en el response
+
+        4.Get_Pet_By_Status:
+            - Pre-request:
+                - No Usa
+            - Body:
+                - No usa
+            - Post-Request [Test]:
+                - Se realizan los test para cada propiedad recibida en el response
+                - la respuesta devuelve varias mascotas pero utilizamos el metodo find para encontar la mascota de pruebas
+        
+3. Conclusiones
+    Resumen E2E:
+        - Utilice muchos wait, mas de los recomendamos pero la pagina tiene un comportamiento extrano para cargar los elementos en el html
+        - Intente seelcionar productos por titulo, pero en ocaciones no encontraba el elemento asi que preferi usar href
+    Resumen API:
+        - decidi incluir id cuando creo una mascota nueva mascota por que cuando no se envia la api tiene un corportamiento extrano.
+

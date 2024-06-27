@@ -6,7 +6,8 @@ Prueba técnica desarrollada por Mijail Osorio utilizando Node.js.
 
 1. Clone el repositorio o descomprima el archivo llamado `Mijail-Test.zip`.
 2. Navegue hasta la carpeta raíz del proyecto o folder y ejecute el comando `npm install`.
-3. Verifique que tenga instalado Newman; si no lo tiene instalado, puede hacerlo ejecutando el comando `npm install -g newman`.
+3. Verifique que tiene instalado Cypress;
+4. Verifique que tenga instalado Newman; si no lo tiene instalado, puede hacerlo ejecutando el comando `npm install -g newman`.
 
 ## Run Test
 1. Para Pruebas E2E ejecute el comando `npm start`
@@ -30,11 +31,12 @@ Se utilizó Cypress para realizar pruebas E2E en el sitio [https://www.demoblaze
    - Verifica la lista principal de productos.
 
 2. **002.login.cy.js**
-   - Registra un nuevo usuario.
+   - Registra un nuevo usuario. (cada vez que se ejecuta cypress crea datos de pruebas unicos)
    - Inicia sesión y cierra sesión.
 
 3. **003.addProducts.cy.js**
    - Agregar Productos al Carrito
+   - Antes de Ejecuatar la prueba cypress genera una lista de productos random
 
 4. **004.viewShoppingCart.cy.js**
    - Verificar Productos en el Carrito
@@ -66,6 +68,12 @@ La colección de Postman contiene cuatro requests a [https://petstore.swagger.io
 
 4. **Get_Pet_By_Status**
    - Se Verifica que los datos actualizados en el paso 3 fueron correctamede actualizados
+
+## Importar Colleciont Postman
+1. Abra Postman
+2. Haga click en Import collection
+3. Selecione el archivo Test-Demoblaze-Mijail.postman_collection.json que esta dentro de la carpeta Postman.
+4. Run Test Collection.
 
 # CI [Jenkins and Slack]
 Este Projecto tiene un archivo JenkisnFile que permite crear un pipeline de pruebas, con stages simples pero que permiten  monitoriar el estado de la aplicacion.
