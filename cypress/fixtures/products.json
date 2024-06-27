@@ -1,15 +1,21 @@
 [
   {
+    "id": 2,
+    "href": "prod.html?idp_=2",
+    "category": "Phones",
+    "title": "Nokia lumia 1520",
+    "price": 820
+  },
+  {
+    "id": 9,
+    "href": "prod.html?idp_=9",
     "category": "Laptops",
     "title": "Sony vaio i7",
     "price": 790
   },
   {
-    "category": "Phones",
-    "title": "HTC One M9",
-    "price": 700
-  },
-  {
+    "id": 14,
+    "href": "prod.html?idp_=14",
     "category": "Monitors",
     "title": "ASUS Full HD",
     "price": 230

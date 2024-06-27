@@ -21,6 +21,7 @@ describe('Ver carrito', () => {
 
         cy.get('#cartur').should('be.visible').click().then(() => {
             cy.wait(3000);
+            cy.screenshot('Added_Products')
             cy.get('h2').should('be.visible').and('contain.text', 'Products');
             cy.get('h2').should('be.visible').and('contain.text', 'Total');
             cy.get('#totalp').should('be.visible').and('not.be.empty');
@@ -70,7 +71,7 @@ describe('Ver carrito', () => {
     
         cy.get('#cartur').should('be.visible').click();
         cy.wait(3000); // Esperar el tiempo necesario para que se carguen los productos en el carrito
-    
+
         // Seleccionar un producto específico para eliminar (por ejemplo, el segundo producto)
         const productToDelete = productData[1]; // Cambia el índice según tu necesidad
     
@@ -101,6 +102,7 @@ describe('Ver carrito', () => {
         cy.wait(2000);
         // Verifica la cantidad y contenido de las filas dentro de tbody
         cy.get('tbody#tbodyid').find('tr').should('have.length', 2);
+        cy.screenshot('Final_Product_List')
     });
     
 });
