@@ -1,6 +1,6 @@
 # TTMO-20240624
 
-Prueba técnica desarrollada por Mijail Osorio utilizando Node.js.
+Prueba técnica desarrollada por Mijail Osorio utilizando Node.js..
 
 ## Instrucciones
 
